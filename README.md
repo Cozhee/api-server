@@ -34,13 +34,13 @@ N/A
 - Feature Two: Added route
 - GET: `/food`
 
-- Feature Two: Added route
+- Feature Three: Added route
 - GET: `/food/:id`
 
-- Feature Two: Added route
+- Feature Four: Added route
 - GET: `/home`
 
-- Feature Two: Added route
+- Feature Five: Added route
 - GET: `/home/:id`
 
 #### Tests

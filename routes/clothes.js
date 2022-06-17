@@ -1,13 +1,13 @@
 'use strict'
 
+const { clothesInterface } = require('../models/index')
 const express = require('express')
-const { ClothesModel } = require('../models/index')
 const router = express.Router()
 
 router.post('/clothes', async(request, response) => {
   const clothes = request.body
   try {
-    const newClothes = await ClothesModel.create(clothes)
+    const newClothes = await clothesInterface.create(clothes)
     response.status(200).send(newClothes)
   } catch(err) {
     response.status(404).send('Could not create clothes object')
@@ -17,7 +17,7 @@ router.post('/clothes', async(request, response) => {
 router.get('/clothes/:id', async(request, response) => {
   const id = request.params.id
   try {
-    const selectedClothes = await ClothesModel.findOne({where: { id: id }})
+    const selectedClothes = await clothesInterface.findOne(id)
     response.status(200).send(selectedClothes)
   } catch(err) {
     response.status(404).send(`Could not find clothes with id of: ${id}`)
@@ -26,7 +26,7 @@ router.get('/clothes/:id', async(request, response) => {
 
 router.get('/clothes', async(request, response) => {
   try {
-    const allClothes = await ClothesModel.findAll({})
+    const allClothes = await clothesInterface.findAll({})
     response.status(200).send(allClothes)
   } catch(err) {
     response.status(404).send('Could not find clothes')
@@ -35,12 +35,10 @@ router.get('/clothes', async(request, response) => {
 
 router.put('/clothes/:id', async(request, response) => {
   const id = request.params.id
-  const updatedClothes = request.body
+  const newProperties = request.body
   try {
-    const selectedClothes = await ClothesModel.findOne({where: { id: id }})
-    await selectedClothes.update(updatedClothes)
-    await selectedClothes.save()
-    response.status(200).send(selectedClothes)
+    const updatedClothes = await clothesInterface.update(id, newProperties)
+    response.status(200).send(updatedClothes)
   } catch(err) {
     response.status(404).send(`Could not update clothes with id of: ${id}`)
   }
@@ -49,9 +47,8 @@ router.put('/clothes/:id', async(request, response) => {
 router.delete('/clothes/:id', async(request, response) => {
   const id = request.params.id
   try {
-    const ClothesItemToDelete = await ClothesModel.findOne({where: { id: id }})
-    await ClothesItemToDelete.destroy()
-    response.status(200).send({})
+    await clothesInterface.delete(id)
+    response.status(200).send(null)
   } catch(err) {
     response.status(404).send(`Could not delete clothes item with id ${id}`)
   }
