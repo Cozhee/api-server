@@ -9,7 +9,7 @@ Setting up a basic express server to configure heroku deployment and to create t
 
 ### Links and Resources
 - [Github](https://github.com/Cozhee/basic-api-server/pulls)
-- [Heroku Dev Deployment](https://cody-server-deploy-dev.herokuapp.com/)
+- [Heroku Dev Deployment](https://lab4-api-server.herokuapp.com/)
 
 ### Setup
 
