@@ -38,10 +38,20 @@ N/A
 - GET: `/food/:id`
 
 - Feature Four: Added route
-- GET: `/home`
+- PUT: `/food/:id`
 
 - Feature Five: Added route
-- GET: `/home/:id`
+- GET: `/clothes`
+
+- Feature Six: Added route
+- GET: `/clothes/:id`
+
+- Feature Seven: Added route
+- PUT: `/clothes/:id`
+
+- Feature Five: Added route
+- DELETE: `/food/:id`
+- DELETE: `/clothes/:id`
 
 #### Tests
 To run tests type `npm test`. Server does not need to be running in another instance
